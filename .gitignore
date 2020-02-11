@@ -1,4 +1,5 @@
 *.log
+*.sc
 *.class
 .idea
 target
