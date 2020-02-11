@@ -12,6 +12,22 @@ class CollectionAssignment {
     list.foldLeft(1) { (acc: Int, element: Int) => acc * element
     }
   }
+
+  //print the table of each element in the List
+  def printTableOfListElements(list: List[Int]): List[(Int, List[Int])] = {
+    for {
+      l <- list
+      table = l -> List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10).map(_ * l)
+    } yield table
+  }
+
+  // Find the last element of list with its index value
+  def lastElementOfList(list: List[Int], indexCounter: Int): Option[(Int, Int)] = list match {
+    case Nil => None
+    case first :: Nil => Some(first, indexCounter)
+    case first :: rest => lastElementOfList(rest, indexCounter + 1)
+  }
+
 }
 
 //Implement Stack and Queue using Lists.
@@ -47,5 +63,8 @@ object CollectionAssignmentOb extends App {
   println(queue.enqueue("orange", color))
   println(queue.deque(color))
 
+  val list1 = List(8, 9)
+  println(collectionAssignment.printTableOfListElements(list1))
 
+  println(collectionAssignment.lastElementOfList(list1, 0))
 }
